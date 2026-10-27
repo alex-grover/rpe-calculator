@@ -23,14 +23,13 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   applicationName: 'RPE Calculator',
   formatDetection: { telephone: false, email: false, address: false },
-  appleWebApp: {
-    capable: true,
-    title: 'RPE',
-    statusBarStyle: 'black-translucent',
-    startupImage: splashScreens.map(({ w, h, dw, dh }) => ({
-      url: `/splash/splash-${w}x${h}.png`,
-      media: `(device-width: ${dw}px) and (device-height: ${dh}px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)`,
-    })),
+  // apple-mobile-web-app-status-bar-style is deliberately omitted: on iOS 26+, black-translucent adds a
+  // system blur/gradient over the status bar that CSS cannot disable. Next.js would inject "default"
+  // via `appleWebApp`, so these tags are emitted manually instead.
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-title': 'RPE',
   },
   icons: {
     icon: [
@@ -38,9 +37,6 @@ export const metadata: Metadata = {
       { url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
-  },
-  other: {
-    'mobile-web-app-capable': 'yes',
   },
 }
 
@@ -61,6 +57,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} bg-background`}>
+      <head>
+        {splashScreens.map(({ w, h, dw, dh }) => (
+          <link
+            key={w}
+            rel="apple-touch-startup-image"
+            href={`/splash/splash-${w}x${h}.png`}
+            media={`(device-width: ${dw}px) and (device-height: ${dh}px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)`}
+          />
+        ))}
+      </head>
       <body className="font-sans antialiased">
         {children}
         <NativeShell />
