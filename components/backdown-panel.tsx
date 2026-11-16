@@ -29,9 +29,7 @@ export function BackdownPanel({ e1rm }: { e1rm: number | null }) {
   const backdownLoad = e1rm !== null && percent !== null ? (e1rm * percent) / 100 : null
 
   return (
-    <section aria-label="Backdown sets" className="flex flex-col gap-3 rounded-2xl bg-card p-4 text-card-foreground">
-      <h2 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Backdown</h2>
-
+    <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
         <StepButton label="Decrease by 2.5%" onClick={() => step(-1)}>
           <Minus className="size-5" aria-hidden />
@@ -73,7 +71,7 @@ export function BackdownPanel({ e1rm }: { e1rm: number | null }) {
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   )
 }
 
