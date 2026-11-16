@@ -17,7 +17,7 @@ export function NextSetCard({ e1rm }: { e1rm: number | null }) {
 
   return (
     <section aria-label="Next set" className="flex flex-col gap-4 rounded-2xl bg-card p-4 text-card-foreground">
-      <div role="tablist" aria-label="Calculator mode" className="grid grid-cols-2 gap-1 rounded-xl bg-background p-1">
+      <div role="tablist" aria-label="Calculator mode" className="grid grid-cols-2 gap-1 rounded-(--track-radius) bg-background p-(--track-padding) [--track-padding:--spacing(1)] [--track-radius:--spacing(4)]">
         {MODES.map((option) => {
           const selected = option.id === mode
           return (
@@ -29,7 +29,7 @@ export function NextSetCard({ e1rm }: { e1rm: number | null }) {
               aria-selected={selected}
               aria-controls={`${baseId}-panel`}
               onClick={() => setMode(option.id)}
-              className={`h-11 rounded-xl text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+              className={`h-11 rounded-[max(0px,calc(var(--track-radius)-var(--track-padding)))] text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                 selected ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'
               }`}
             >
