@@ -29,7 +29,7 @@ export function NextSetCard({ e1rm }: { e1rm: number | null }) {
               aria-selected={selected}
               aria-controls={`${baseId}-panel`}
               onClick={() => setMode(option.id)}
-              className={`h-11 rounded-lg text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+              className={`h-11 rounded-xl text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                 selected ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'
               }`}
             >

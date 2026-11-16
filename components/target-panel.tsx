@@ -14,8 +14,8 @@ export function TargetPanel({ e1rm }: { e1rm: number | null }) {
   return (
     <div className="flex flex-col gap-3">
       <div className="grid grid-cols-2 gap-2">
-        <SelectField label="Reps" value={reps} onChange={setReps} options={REP_OPTIONS} format={String} surface="background" />
-        <SelectField label="RPE" value={rpe} onChange={setRpe} options={RPE_OPTIONS} format={formatRpe} surface="background" />
+        <SelectField label="Reps" value={reps} onChange={setReps} options={REP_OPTIONS} format={String} surface="raised" />
+        <SelectField label="RPE" value={rpe} onChange={setRpe} options={RPE_OPTIONS} format={formatRpe} surface="raised" />
       </div>
 
       <div aria-live="polite" className="flex items-baseline justify-between border-b border-border pb-3">

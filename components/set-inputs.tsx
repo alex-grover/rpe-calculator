@@ -41,7 +41,7 @@ type SelectFieldProps = {
   options: number[]
   format: (value: number) => string
   onChange: (value: number) => void
-  surface?: 'card' | 'background'
+  surface?: 'card' | 'raised'
 }
 
 export function SelectField({ label, value, options, format, onChange, surface = 'card' }: SelectFieldProps) {
@@ -52,7 +52,7 @@ export function SelectField({ label, value, options, format, onChange, surface =
         <select
           value={value}
           onChange={(event) => onChange(Number(event.target.value))}
-          className={`${fieldClass} appearance-none pr-8 ${surface === 'background' ? 'bg-background text-foreground' : ''}`}
+          className={`${fieldClass} appearance-none pr-8 ${surface === 'raised' ? 'bg-field text-foreground' : ''}`}
         >
           {options.map((option) => (
             <option key={option} value={option}>
