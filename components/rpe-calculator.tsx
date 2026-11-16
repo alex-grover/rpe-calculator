@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { BackdownPanel } from '@/components/backdown-panel'
+import { NextSetCard } from '@/components/next-set-card'
 import { SetInputs } from '@/components/set-inputs'
 import { estimateOneRepMax, formatWeight } from '@/lib/rpe'
 
@@ -28,7 +28,7 @@ export function RpeCalculator() {
         </p>
       </section>
 
-      <BackdownPanel e1rm={e1rm} />
+      <NextSetCard e1rm={e1rm} />
     </main>
   )
 }
